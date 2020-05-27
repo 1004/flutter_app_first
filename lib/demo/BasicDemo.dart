@@ -7,16 +7,86 @@ class BasicDemo extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return ContainerDeom();
   }
 }
 
+//容器:边框，圆角,阴影,形状,渐变,背景
+class ContainerDeom extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1590555361636&di=7ab8f72e2145b4436b1f4caef86a8f1e&imgtype=0&src=http%3A%2F%2Fp2.so.qhimgs1.com%2Ft01dfcbc38578dac4c2.jpg"),
+          alignment: Alignment.topCenter,
+          fit: BoxFit.cover,
+          colorFilter: ColorFilter.mode(Colors.indigoAccent.withOpacity(0.5), BlendMode.hardLight)
+        )
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment:CrossAxisAlignment.start,
+        children: <Widget>[
+          Container(
+            child: Icon(
+              Icons.pool,
+              size: 32,
+              color: Colors.deepPurple,
+            ),
+            width: 90,
+            height: 90,
+            margin: EdgeInsets.all(8),
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              color: Colors.blueAccent,
+//              borderRadius: BorderRadius.circular(18),
+//            borderRadius: BorderRadius.only(
+//              topLeft: Radius.circular(18)
+//            ),
+              border: Border.all(
+                  color: Colors.deepOrange,
+              ),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0,16),
+                  color: Color.fromRGBO(16, 20, 188, 1.0),
+                  blurRadius: 25,
+                  spreadRadius: -9
+                )
+              ],
+              shape: BoxShape.circle,
+              gradient: RadialGradient(
+                colors: [
+                  Color.fromRGBO(7, 102, 255, 1.0),
+                  Color.fromRGBO(3, 28, 128, 1.0)
+                ]
+              )
+            ),
+          ),
+          Container(
+            child: Icon(
+              Icons.pool,
+              size: 32,
+              color: Colors.red,
+            ),
+            width: 90,
+            height: 90,
+            margin: EdgeInsets.all(8),
+            padding: EdgeInsets.all(16),
+            color: Color.fromRGBO(3, 54, 255, 1),
+          ),
+        ],
+      ),
+    );
+  }
+
+}
 
 //富文本
 class RichTextDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return RichText(
       text: TextSpan(
           text: "我是",
